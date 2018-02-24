@@ -10,7 +10,7 @@ namespace Algorithms.Sort
             for (int i = 0; i < arr.Length; i++)
             {
                 int minIndex = i;
-
+                
                 for (int j = i; j < arr.Length; j++)
                 {
                     if (arr[j].CompareTo(arr[minIndex]) <= 0)
@@ -19,9 +19,7 @@ namespace Algorithms.Sort
                     }
                 }
 
-                T temp = arr[i];
-                arr[i] = arr[minIndex];
-                arr[minIndex] = temp;
+                SortTestHelper.swap(arr, i, minIndex);
             }
         }
 
