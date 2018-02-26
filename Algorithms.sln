@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{C8B698A6-CF34-4D74-BEB3-32BF3C1459FF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sort", "Sort\Sort.csproj", "{18D98339-D6C2-42EA-BDFB-157C8A9A085C}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8B698A6-CF34-4D74-BEB3-32BF3C1459FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8B698A6-CF34-4D74-BEB3-32BF3C1459FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8B698A6-CF34-4D74-BEB3-32BF3C1459FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8B698A6-CF34-4D74-BEB3-32BF3C1459FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18D98339-D6C2-42EA-BDFB-157C8A9A085C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18D98339-D6C2-42EA-BDFB-157C8A9A085C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D98339-D6C2-42EA-BDFB-157C8A9A085C}.Release|Any CPU.ActiveCfg = Release|Any CPU
