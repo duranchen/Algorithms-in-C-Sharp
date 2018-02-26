@@ -8,23 +8,29 @@ namespace Algorithms.Sort
 
         static void Main(string[] args)
         {
-            int n = 10;
+            int n = 10000;
             int[] a = SortTestHelper.generateRandomArray(n, 0, n);
             int[] d = SortTestHelper.generateNearlyOrderedArray(n, 3);
- 
+
             //SelectionSort.sort(a);
             //SortTestHelper.printArray(a);
             int[] b = new int[a.Length];
             int[] c = new int[a.Length];
+            int[] e = new int[a.Length];
             Array.Copy(a, b, a.Length);
             Array.Copy(a, c, a.Length);
+            Array.Copy(a, e, a.Length);
 
             SortTestHelper.testSort("Selection Sort", SelectionSort.sort, a);
             SortTestHelper.testSort("Insertion Sort Basic", InsertionSort.sortBasic, b);
             SortTestHelper.testSort("Insertion Sort Advanced", InsertionSort.sortAdvanced, c);
             SortTestHelper.testSort("Insertion Sort Advanced Nearly Ordered", InsertionSort.sortAdvanced, d);
+            SortTestHelper.testSort("Bubble Sort", BubbleSort.sort, e);
 
-   
+            //foreach (int i in e)
+            //{
+            //    Console.WriteLine(i);
+            //}
             float[] f = { 3.1F, 2.2F, 3.2F, 1.1F };
             InsertionSort.sortBasic(f);
 

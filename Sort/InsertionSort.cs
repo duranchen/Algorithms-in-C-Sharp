@@ -9,7 +9,7 @@ namespace Algorithms.Sort
         {
             for (int i = 1; i < arr.Length; i++)
             {
-
+ 
                 for (int j = i; j > 0; j--)
                 {
                     if (arr[j - 1].CompareTo(arr[j]) > 0)
