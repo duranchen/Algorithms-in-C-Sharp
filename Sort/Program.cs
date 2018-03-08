@@ -21,6 +21,8 @@ namespace Algorithms.Sort
             int[] g = new int[a.Length];
             int[] h = new int[a.Length];
             int[] i = new int[a.Length];
+            int[] j = new int[a.Length];
+
 
 
             Array.Copy(a, b, a.Length);
@@ -29,6 +31,8 @@ namespace Algorithms.Sort
             Array.Copy(a, f, a.Length);
             Array.Copy(a, h, a.Length);
             Array.Copy(a, i, a.Length);
+            Array.Copy(a, j, a.Length);
+
 
 
             //   SortTestHelper.testSort("Selection Sort", SelectionSort.sort, a);
@@ -40,11 +44,12 @@ namespace Algorithms.Sort
             SortTestHelper.testSort("Merge Sort", MergeSort<int>.sort, g);
             SortTestHelper.testSort("Merge Sort Advanced", MergeSortAdvanced<int>.sort, h);
             SortTestHelper.testSort("Merge Sort Buttom UP", MergeSortBU<int>.sort, i);
+            SortTestHelper.testSort("Quick Sort", QuickSort.sort, j);
 
 
-            //foreach (int i in e)
+            //foreach (int o in j)
             //{
-            //    Console.WriteLine(i);
+            //    Console.WriteLine(o);
             //}
 
             Console.WriteLine("------------------------");
