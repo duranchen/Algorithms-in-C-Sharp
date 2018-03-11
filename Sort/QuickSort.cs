@@ -18,14 +18,14 @@ namespace Algorithms.Sort
                 return;
             }
 
-            int j = partition(arr, l, r);
+            int j = partition1(arr, l, r);
             sort(arr, l, j - 1);
             sort(arr, j + 1, r);
         }
 
         public static int partition<T>(T[] arr, int l, int r) where T : IComparable
         {
-            int i = l , j = r+1;
+            int i = l, j = r + 1;
 
             while (true)
             {
@@ -36,7 +36,7 @@ namespace Algorithms.Sort
                     {
                         break;
                     }
-                   
+
                 }
                 while (arr[--j].CompareTo(arr[l]) > 0)
                 {
@@ -44,7 +44,7 @@ namespace Algorithms.Sort
                     {
                         break;
                     }
-                    
+
                 }
 
                 if (i >= j)
@@ -59,7 +59,60 @@ namespace Algorithms.Sort
 
 
         }
-       
+
+        public static int partition1<T>(T[] arr, int l, int r) where T : IComparable
+        {
+            int i = l + 1, j = l;
+
+            while (i <= r)
+            {
+                if (arr[i].CompareTo(arr[l]) <= 0)
+                {
+                    j++;
+                    SortTestHelper.swap(arr, j, i);
+
+                }
+                i++;
+
+            }
+
+            SortTestHelper.swap(arr, l, j);
+            return j;
+
+
+        }
+
+
+        public static int partition2<T>(T[] arr, int l, int r) where T : IComparable
+        {
+            int i = l, j = r;
+
+            while (i != j)
+            {
+                // 必须j先出动，因为j是寻找小于基准数的值，最后与基准数交换位置的值必须小于基准数的数。
+                while (i < j && arr[j].CompareTo(arr[l]) >= 0)
+                {
+                    j--;
+
+                }
+
+                while (i < j && arr[i].CompareTo(arr[l]) <= 0)
+                {
+                    i++;
+                }
+
+                if (i < j)
+                {
+                    SortTestHelper.swap(arr, i, j);
+                }
+            }
+
+            SortTestHelper.swap(arr, j, l);
+
+            return i;
+
+        }
+
 
     }
 }

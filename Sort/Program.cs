@@ -8,7 +8,7 @@ namespace Algorithms.Sort
 
         static void Main(string[] args)
         {
-            int n = 1000000;
+            int n = 5;
             int[] a = SortTestHelper.generateRandomArray(n, 0, n);
             int[] d = SortTestHelper.generateNearlyOrderedArray(n, 100);
 
@@ -47,10 +47,10 @@ namespace Algorithms.Sort
             SortTestHelper.testSort("Quick Sort", QuickSort.sort, j);
 
 
-            //foreach (int o in j)
-            //{
-            //    Console.WriteLine(o);
-            //}
+            foreach (int o in j)
+            {
+                Console.WriteLine(o);
+            }
 
             Console.WriteLine("------------------------");
             float[] z = { 3.1F, 2.2F, 3.2F, 1.1F };
