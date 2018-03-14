@@ -7,7 +7,9 @@ namespace Algorithms.Sort
         public static void sort<T>(T[] arr) where T : IComparable
         {
 
-            sort(arr, 0, arr.Length - 1);
+             sort(arr, 0, arr.Length - 1);
+
+            //sort3ways(arr, 0, arr.Length - 1);
 
         }
 
@@ -18,9 +20,38 @@ namespace Algorithms.Sort
                 return;
             }
 
-            int j = partition1(arr, l, r);
+            int j = partition22(arr, l, r);
             sort(arr, l, j - 1);
             sort(arr, j + 1, r);
+        }
+
+        public static void sort3ways<T>(T[] arr,int l, int r) where T : IComparable
+        {
+
+            if (r <= l) return;
+            int lt = l, gt = r, i = l + 1;
+            T v = arr[l];
+            while (i <= gt)
+            {
+
+                int cmp = arr[i].CompareTo(v);
+                if (cmp<0)
+                {
+                    SortTestHelper.swap(arr, i, lt);
+                    lt++;
+                    i++;
+                } else if(cmp ==0)
+                {
+                    i++;
+                } else
+                {
+                    SortTestHelper.swap(arr, i, gt);
+                    gt--;
+                }
+            }
+
+            sort3ways(arr, l, lt - 1);
+            sort3ways(arr, gt + 1, r);
         }
 
         public static int partition<T>(T[] arr, int l, int r) where T : IComparable
@@ -60,6 +91,7 @@ namespace Algorithms.Sort
 
         }
 
+        //单路快速排序
         public static int partition1<T>(T[] arr, int l, int r) where T : IComparable
         {
             int i = l + 1, j = l;
@@ -83,7 +115,7 @@ namespace Algorithms.Sort
         }
 
 
-        public static int partition2<T>(T[] arr, int l, int r) where T : IComparable
+        public static int partition21<T>(T[] arr, int l, int r) where T : IComparable
         {
             int i = l, j = r;
 
@@ -113,6 +145,33 @@ namespace Algorithms.Sort
 
         }
 
+        public static int partition22<T>(T[] arr, int l, int r) where T : IComparable
+        {
+            int i= l+1,j = r;
+
+            while(true)
+            {
+                while(i<=r&&arr[i].CompareTo(arr[l])<0)
+                {
+                    i++;
+                }
+                while(j>=l+1&&arr[j].CompareTo(arr[l])>0)
+                {
+                    j--;
+                }
+                if (i > j)
+                {
+                    break;
+                } 
+                SortTestHelper.swap(arr, i, j);
+                i++;
+                j--;
+            }
+
+            SortTestHelper.swap(arr, l, j);
+
+            return j;
+        }
 
     }
 }
