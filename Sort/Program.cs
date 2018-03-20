@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Heap;
 namespace Algorithms.Sort
 {
 
@@ -8,7 +8,7 @@ namespace Algorithms.Sort
 
         static void Main(string[] args)
         {
-            int n = 10000;
+            int n = 1000000;
             int[] a = SortTestHelper.generateRandomArray(n, 0, n);
             int[] d = SortTestHelper.generateNearlyOrderedArray(n, 100);
 
@@ -22,6 +22,7 @@ namespace Algorithms.Sort
             int[] h = new int[a.Length];
             int[] i = new int[a.Length];
             int[] j = new int[a.Length];
+            int[] k = new int[a.Length];
 
 
 
@@ -32,6 +33,7 @@ namespace Algorithms.Sort
             Array.Copy(a, h, a.Length);
             Array.Copy(a, i, a.Length);
             Array.Copy(a, j, a.Length);
+            Array.Copy(a, k, a.Length);
 
 
 
@@ -45,12 +47,16 @@ namespace Algorithms.Sort
             SortTestHelper.testSort("Merge Sort Advanced", MergeSortAdvanced<int>.sort, h);
             SortTestHelper.testSort("Merge Sort Buttom UP", MergeSortBU<int>.sort, i);
             SortTestHelper.testSort("Quick Sort", QuickSort.sort, j);
+            SortTestHelper.testSort("Heap Sort", HeapSort.sort, k);
+           
+            
+            
 
 
-           // foreach (int o in j)
-           // {
-           //     Console.WriteLine(o);
-           // }
+            // foreach (int o in k)
+            // {
+            //     Console.WriteLine(o);
+            // }
 
             Console.WriteLine("------------------------");
             float[] z = { 3.1F, 2.2F, 3.2F, 1.1F };

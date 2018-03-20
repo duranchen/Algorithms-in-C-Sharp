@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BubbleSort.cs" />
+    <Compile Include="HeapSort.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="MergeSortAdvanced.cs" />
@@ -84,6 +85,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Heap\Heap.csproj">
+      <Project>{5eb1ec9a-c0e6-4479-811f-617767b9d534}</Project>
+      <Name>Heap</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
