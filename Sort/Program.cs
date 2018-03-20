@@ -23,6 +23,8 @@ namespace Algorithms.Sort
             int[] i = new int[a.Length];
             int[] j = new int[a.Length];
             int[] k = new int[a.Length];
+            int[] l = new int[a.Length];
+
 
 
 
@@ -34,6 +36,7 @@ namespace Algorithms.Sort
             Array.Copy(a, i, a.Length);
             Array.Copy(a, j, a.Length);
             Array.Copy(a, k, a.Length);
+            Array.Copy(a, l , a.Length);
 
 
 
@@ -48,15 +51,17 @@ namespace Algorithms.Sort
             SortTestHelper.testSort("Merge Sort Buttom UP", MergeSortBU<int>.sort, i);
             SortTestHelper.testSort("Quick Sort", QuickSort.sort, j);
             SortTestHelper.testSort("Heap Sort", HeapSort.sort, k);
-           
-            
-            
+            SortTestHelper.testSort("Heap Sort - no aux array", HeapSort2.sort, l);
 
 
-            // foreach (int o in k)
-            // {
-            //     Console.WriteLine(o);
-            // }
+
+
+
+
+             //foreach (int o in l)
+             //{
+             //    Console.WriteLine(o);
+             //}
 
             Console.WriteLine("------------------------");
             float[] z = { 3.1F, 2.2F, 3.2F, 1.1F };
