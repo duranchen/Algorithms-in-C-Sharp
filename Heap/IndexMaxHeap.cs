@@ -2,38 +2,19 @@
 
 namespace Heap
 {
-    public class MaxHeap<Item> where Item : IComparable
+    public class IndexMaxHeap<Item> where Item : IComparable
     {
         public Item[] data;
-        private int count;
+        public int[] indexes;
+        protected int count;
+        protected int capacity;
 
-        public MaxHeap(int capacity)
+        public IndexMaxHeap(int capacity)
         {
             data = new Item[capacity + 1];
+            indexes = new int[capacity + 1];
             count = 0;
-        }
-
-        public MaxHeap(Item[] arr)
-        {
-
-            count = arr.Length;
-            Item[] data = new Item[arr.Length + 1];
-            for(int i =0; i<arr.Length;i++)
-            {
-                data[i + 1] = arr[i];
-
-            }
-
-            this.data = data;
-            int k = count/2;
-            while(k >=1)
-            {
-                sink(k);
-                k--;
-            }
-
-           
-          
+            this.capacity = capacity;
         }
 
         public int size()
@@ -41,31 +22,30 @@ namespace Heap
             return count;
         }
 
-        public bool isEmpty()
+        public Boolean isEmpty()
         {
             return count == 0 ? true : false;
         }
 
-        public void insert(Item item)
+        public void insert(int i,Item item)
         {
-
-            data[++count] = item;
-            if (count > 1)
-            {
-                int i = count;
-                swim(i);
-
-            }
+            i = i + 1;
+            data[i] = item;        
+          
+            indexes[count+1] = i;
+            count++;
+        
+            swim(count);
 
         }
 
         public void swim(int i)
         {
-            while (i > 1 && data[i / 2].CompareTo(data[i]) < 0)
+            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
             {
-                Item temp = data[i];
-                data[i] = data[i / 2];
-                data[i / 2] = temp;
+                int temp = indexes[i];
+                indexes[i] = indexes[i / 2];
+                indexes[i / 2] = temp;
                 i = i / 2;
             }
 
