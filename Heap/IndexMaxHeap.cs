@@ -27,14 +27,14 @@ namespace Heap
             return count == 0 ? true : false;
         }
 
-        public void insert(int i,Item item)
+        public void insert(int i, Item item)
         {
             i = i + 1;
-            data[i] = item;        
-          
-            indexes[count+1] = i;
+            data[i] = item;
+
+            indexes[count + 1] = i;
             count++;
-        
+
             swim(count);
 
         }
@@ -43,57 +43,24 @@ namespace Heap
         {
             while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
             {
-                int temp = indexes[i];
-                indexes[i] = indexes[i / 2];
-                indexes[i / 2] = temp;
+                //int temp = indexes[i];
+                //indexes[i] = indexes[i / 2];
+                //indexes[i / 2] = temp;
+                swap(i, i / 2);
                 i = i / 2;
             }
 
         }
 
-        public Item delMax_M()
-        {
-            Item maxItem = data[1];
-            data[1] = data[count];
-            data[count] = default(Item);
-            count--;
-            int i = 1;
-            while (i * 2 + 1 <= count)
-            {
-
-                if (i * 2 == count)
-                {
-
-                    swap(i * 2, i);
-                    break;
-                }
-
-                if (data[i * 2].CompareTo(data[i * 2 + 1]) > 0)
-                {
-
-                    swap(i * 2, i);
-                    i = i * 2;
-
-                }
-                else
-                {
-                    swap(i * 2 + 1, i);
-                    i = i * 2 + 1;
-                }
-            }
-
-            return maxItem;
-
-        }
-
         public Item delMax()
         {
-            Item maxItem = data[1];
-            data[1] = data[count];
-            data[count--] = default(Item);
-            int k = 1;
-
-            sink(k);
+            Item maxItem = data[indexes[1]];
+            indexes[1] = indexes[count];
+            
+            //data[indexes[count]] = default(Item);  //data数组内容不变
+            indexes[count] = default(int);
+            count--;
+            sink(1);
 
             return maxItem;
         }
@@ -105,18 +72,17 @@ namespace Heap
             {
                 int j = k * 2;
 
-                if (j + 1 <= count && data[j].CompareTo(data[j + 1]) < 0)
+                if (j + 1 <= count && data[indexes[j]].CompareTo(data[indexes[j + 1]]) < 0)
                 {
                     j++;
                 }
 
-                if (data[j].CompareTo(data[k]) < 0)
+                if (data[indexes[j]].CompareTo(data[indexes[k]]) < 0)
                 {
                     break;
                 }
 
                 swap(k, j);
-
                 k = j;
 
             }
@@ -125,12 +91,30 @@ namespace Heap
 
         public void swap(int i, int j)
         {
-            Item temp = data[i];
-            data[i] = data[j];
-            data[j] = temp;
+            int temp = indexes[i];
+            indexes[i] = indexes[j];
+            indexes[j] = temp;
         }
 
+        public void printIndexHeap()
+        {
 
+            for (int h = 1; h <= count; h++)
+            {
+                Console.Write(h.ToString().PadRight(3));
+            }
+            Console.WriteLine();
+            for (int h = 1; h <= count; h++)
+            {
+                Console.Write(indexes[h].ToString().PadRight(3));
+            }
+            Console.WriteLine();
+            for (int h = 1; h <= count; h++)
+            {
+                Console.Write(data[h].ToString().PadRight(3));
+            }
+            Console.WriteLine();
+        }
 
     }
 }

@@ -4,8 +4,8 @@ namespace Heap
 {
     public class MaxHeap<Item> where Item : IComparable
     {
-        public Item[] data;
-        private int count;
+        private Item[] data;
+        private int count { get; set; }
 
         public MaxHeap(int capacity)
         {
@@ -150,7 +150,21 @@ namespace Heap
             data[j] = temp;
         }
 
+        public void printHeap()
+        {
 
+            for (int i = 1; i <= count; i++)
+            {
+                Console.Write(i.ToString().PadRight(3));
+
+            }
+            Console.WriteLine();
+            for (int i = 1; i <= count; i++)
+            {
+                Console.Write(data[i].ToString().PadRight(3));
+
+            }
+        }
 
     }
 }

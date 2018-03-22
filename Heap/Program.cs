@@ -10,60 +10,45 @@ namespace Heap
     {
         static void Main(string[] args)
         {
-            MaxHeap<int> heap = new MaxHeap<int>(10);
 
-            heap.insert(30);
-            heap.insert(20);
-            heap.insert(10);
-            heap.insert(25);
-            heap.insert(100);
-            heap.insert(90);
+            Random random = new Random();
 
-            foreach (int item in heap.data)
+            int m = 10;
+            MaxHeap<int> heap = new MaxHeap<int>(m);
+
+            while(m>0)
             {
-                Console.WriteLine(item);
-
+                heap.insert(random.Next(1,100));
+                m--;
             }
 
-            int i = heap.delMax();
+            heap.printHeap();
 
-            Console.WriteLine("Max:" +i);
+            Console.WriteLine();
+            int maxHeapItem = heap.delMax();
 
-            foreach (int item in heap.data)
-            {
-                Console.WriteLine(item);
+            Console.WriteLine("Max:" +maxHeapItem);
 
-            }
+            heap.printHeap();
 
-            Console.WriteLine(heap.size());
-
+            // Console.WriteLine(heap.size());
+            Console.WriteLine();
             Console.WriteLine("---------------------");
 
             int n = 5;
             IndexMaxHeap<int> indexHeap = new IndexMaxHeap<int>(n);
-            Random random = new Random();
+        
             for(int k =0;k< n; k++)
             {
                 indexHeap.insert(k, random.Next(1, 100));
             }
 
-            for(int h = 1;h<= n; h++)
-            {
-                Console.Write(h.ToString().PadRight(3));
-            }
-            Console.WriteLine();
-            for (int h = 1; h <= n; h++)
-            {
-                Console.Write(indexHeap.indexes[h].ToString().PadRight(3));
-            }
-            Console.WriteLine();
-            for (int h = 1; h <= n; h++)
-            {
-                Console.Write(indexHeap.data[h].ToString().PadRight(3));
-            }
-            Console.WriteLine();
+            indexHeap.printIndexHeap();
 
+            int max = indexHeap.delMax();
+            Console.WriteLine("Max Item:"+max);
 
+            indexHeap.printIndexHeap();
 
         }
     }
