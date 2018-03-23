@@ -33,21 +33,24 @@ namespace Heap
 
             // Console.WriteLine(heap.size());
             Console.WriteLine();
-            Console.WriteLine("---------------------");
+            Console.WriteLine("----Index Max Heap----");
 
             int n = 5;
             IndexMaxHeap<int> indexHeap = new IndexMaxHeap<int>(n);
         
             for(int k =0;k< n; k++)
             {
-                indexHeap.insert(k, random.Next(1, 100));
+                indexHeap.insert(k, random.Next(1, 10));
             }
 
             indexHeap.printIndexHeap();
+            Console.WriteLine("---------------------");
+            // int max = indexHeap.delMax();
+            //  Console.WriteLine("Max Item:"+max);
 
-            int max = indexHeap.delMax();
-            Console.WriteLine("Max Item:"+max);
-
+            indexHeap.printIndexHeap();
+            Console.WriteLine("---------------------");
+            indexHeap.change(2, 8);
             indexHeap.printIndexHeap();
 
         }

@@ -57,12 +57,48 @@ namespace Heap
             Item maxItem = data[indexes[1]];
             indexes[1] = indexes[count];
             
-            //data[indexes[count]] = default(Item);  //data数组内容不变
             indexes[count] = default(int);
             count--;
             sink(1);
 
             return maxItem;
+        }
+
+        public int delMaxIndex()
+        {
+            int maxIndex = indexes[1];
+
+            maxIndex = maxIndex - 1;
+            indexes[1] = indexes[count];
+
+            indexes[count] = default(int);
+            count--;
+            sink(1);
+
+            return maxIndex;
+        }
+
+        //获取索引为i的元素
+        public Item getItem(int i)
+        {
+            return data[i+1];
+        }
+
+        //将索引为i的元素修改newItem
+        public void change(int i, Item newItem)
+        {
+            data[++i] = newItem;
+            for(int j=1;j<=count;j++)
+            {
+                if(indexes[j] == i)
+                {
+                    swim(j);
+                    sink(j);
+                    return;
+                }
+            }
+
+
         }
 
         public void sink(int k)
@@ -115,6 +151,8 @@ namespace Heap
             }
             Console.WriteLine();
         }
+
+
 
     }
 }
