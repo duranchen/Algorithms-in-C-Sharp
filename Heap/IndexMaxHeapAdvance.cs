@@ -2,72 +2,101 @@
 
 namespace Heap
 {
-    public class IndexMaxHeap<Item> where Item : IComparable
+    public class IndexMaxHeapAdvance<Item> where Item : IComparable
     {
-        public Item[] data;
-        public int[] indexes;
+        private Item[] data; //数据
+        private int[] indexes; //索引
+        private int[] reverse;  //反向索引， reverse[i] =x 表示索引i在x的位置
         protected int count;
         protected int capacity;
 
-        //构造一个空堆，有capacity个元素
-        public IndexMaxHeap(int capacity)
+        public IndexMaxHeapAdvance(int capacity)
         {
             data = new Item[capacity + 1];
             indexes = new int[capacity + 1];
+            reverse = new int[capacity + 1];
+
+            for (int i = 0; i <= capacity; i++)
+            {
+                reverse[i] = 0;
+            }
             count = 0;
             this.capacity = capacity;
         }
 
-        //返回索引堆中的元素个数
         public int size()
         {
             return count;
         }
 
-        //判断索引堆是否为空
         public Boolean isEmpty()
         {
             return count == 0 ? true : false;
         }
 
-        //向索引堆中插入一个新元素，新元素索引为i，元素为item
-        //对于用户，索引从0开始
+        //参数i，对于用户是从0开始
         public void insert(int i, Item item)
         {
-            i = i + 1; //索引从0开始，所以加1
-            data[i] = item;
 
+            data[++i] = item;
             indexes[++count] = i;
+            reverse[i] = count;
 
             swim(count);
+        }
+
+        public void swim(int i)
+        {
+            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
+            {
+                swap(i, i / 2);
+                i = i / 2;
+            }
 
         }
 
-        //从索引堆中取出最大元素，并在堆中删除该元素
+        public void sink(int k)
+        {
+
+            while (k * 2 <= count)
+            {
+                int j = k * 2;
+
+                if (j + 1 <= count && data[indexes[j]].CompareTo(data[indexes[j + 1]]) < 0)
+                {
+                    j++;
+                }
+
+                if (data[indexes[j]].CompareTo(data[indexes[k]]) < 0)
+                {
+                    break;
+                }
+
+                swap(k, j);
+                k = j;
+            }
+        }
+
         public Item delMax()
         {
             Item maxItem = data[indexes[1]];
-            swapIndexes(1, count);
+            indexes[1] = indexes[count];
 
-            data[indexes[count]] = default(Item);
-            indexes[count] = -1;
-
+            indexes[count] = default(int);
             count--;
             sink(1);
 
             return maxItem;
         }
 
-        //从索引堆中取出最大元素的索引，并在堆中删除该索引
         public int delMaxIndex()
         {
-            int maxIndex = indexes[1]-1;
+            int maxIndex = indexes[1];
 
+            maxIndex = maxIndex - 1;
+            indexes[1] = indexes[count];
 
-            swapIndexes(1, count);
-            data[indexes[count]] = default(Item);
-
-            indexes[count] = -1;
+            indexes[count] = default(int);
             count--;
             sink(1);
 
@@ -93,45 +122,9 @@ namespace Heap
                     return;
                 }
             }
-
         }
 
-        public void sink(int k)
-        {
-
-            while (k * 2 <= count)
-            {
-                int j = k * 2;
-
-                if (j + 1 <= count && data[indexes[j]].CompareTo(data[indexes[j + 1]]) < 0)
-                {
-                    j++;
-                }
-
-                if (data[indexes[j]].CompareTo(data[indexes[k]]) < 0)
-                {
-                    break;
-                }
-
-                swapIndexes(k, j);
-                k = j;
-
-            }
-
-        }
-
-        public void swim(int i)
-        {
-            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
-            {
-                swapIndexes(i, i / 2);
-                i = i / 2;
-            }
-
-        }
-
-
-        public void swapIndexes(int i, int j)
+        public void swap(int i, int j)
         {
             int temp = indexes[i];
             indexes[i] = indexes[j];
@@ -141,27 +134,21 @@ namespace Heap
         public void printIndexHeap()
         {
 
-            for (int h = 0; h <= capacity; h++)
+            for (int h = 1; h <= count; h++)
             {
                 Console.Write(h.ToString().PadRight(3));
             }
             Console.WriteLine();
-            Console.Write("i  ");
-            for (int h = 1; h <= capacity; h++)
+            for (int h = 1; h <= count; h++)
             {
                 Console.Write(indexes[h].ToString().PadRight(3));
             }
             Console.WriteLine();
-
-            Console.Write("d  ");
-            for (int h = 1; h <= capacity; h++)
+            for (int h = 1; h <= count; h++)
             {
                 Console.Write(data[h].ToString().PadRight(3));
             }
             Console.WriteLine();
         }
-
-
-
     }
 }

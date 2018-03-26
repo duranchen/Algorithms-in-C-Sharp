@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IndexMaxHeap.cs" />
+    <Compile Include="IndexMaxHeapAdvance.cs" />
     <Compile Include="MaxHeap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

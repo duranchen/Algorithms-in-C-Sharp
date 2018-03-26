@@ -16,9 +16,9 @@ namespace Heap
             int m = 10;
             MaxHeap<int> heap = new MaxHeap<int>(m);
 
-            while(m>0)
+            while (m > 0)
             {
-                heap.insert(random.Next(1,100));
+                heap.insert(random.Next(1, 100));
                 m--;
             }
 
@@ -27,7 +27,7 @@ namespace Heap
             Console.WriteLine();
             int maxHeapItem = heap.delMax();
 
-            Console.WriteLine("Max:" +maxHeapItem);
+            Console.WriteLine("Max:" + maxHeapItem);
 
             heap.printHeap();
 
@@ -37,21 +37,26 @@ namespace Heap
 
             int n = 5;
             IndexMaxHeap<int> indexHeap = new IndexMaxHeap<int>(n);
-        
-            for(int k =0;k< n; k++)
+
+            for (int k = 0; k < n; k++)
             {
                 indexHeap.insert(k, random.Next(1, 10));
             }
+            indexHeap.printIndexHeap();
 
-            indexHeap.printIndexHeap();
             Console.WriteLine("---------------------");
-            // int max = indexHeap.delMax();
-            //  Console.WriteLine("Max Item:"+max);
+            int max = indexHeap.delMax();
+            Console.WriteLine("Delete Max Item:" + max);
+            indexHeap.printIndexHeap();
 
-            indexHeap.printIndexHeap();
             Console.WriteLine("---------------------");
-            indexHeap.change(2, 8);
+            int maxIndex = indexHeap.delMaxIndex();
+            Console.WriteLine("Delete Max Item Index:" + maxIndex);
             indexHeap.printIndexHeap();
+
+            //Console.WriteLine("---------------------");
+            //indexHeap.change(2, 8);
+            //indexHeap.printIndexHeap();
 
         }
     }
