@@ -7,8 +7,8 @@ namespace Heap
         private Item[] data; //数据
         private int[] indexes; //索引
         private int[] reverse;  //反向索引， reverse[i] =x 表示索引i在x的位置
-        protected int count;
-        protected int capacity;
+        protected int count; // 记录索引数量
+        protected int capacity; //索引堆容量
 
         public IndexMaxHeapAdvance(int capacity)
         {
@@ -18,7 +18,7 @@ namespace Heap
 
             for (int i = 0; i <= capacity; i++)
             {
-                reverse[i] = 0;
+                reverse[i] = -1;
             }
             count = 0;
             this.capacity = capacity;
@@ -34,7 +34,8 @@ namespace Heap
             return count == 0 ? true : false;
         }
 
-        //参数i，对于用户是从0开始
+        //向索引堆中插入一个新元素，新元素索引为i，元素为item
+        //对于用户，索引从0开始
         public void insert(int i, Item item)
         {
 
@@ -43,38 +44,6 @@ namespace Heap
             reverse[i] = count;
 
             swim(count);
-        }
-
-        public void swim(int i)
-        {
-            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
-            {
-                swap(i, i / 2);
-                i = i / 2;
-            }
-
-        }
-
-        public void sink(int k)
-        {
-
-            while (k * 2 <= count)
-            {
-                int j = k * 2;
-
-                if (j + 1 <= count && data[indexes[j]].CompareTo(data[indexes[j + 1]]) < 0)
-                {
-                    j++;
-                }
-
-                if (data[indexes[j]].CompareTo(data[indexes[k]]) < 0)
-                {
-                    break;
-                }
-
-                swap(k, j);
-                k = j;
-            }
         }
 
         public Item delMax()
@@ -124,11 +93,46 @@ namespace Heap
             }
         }
 
-        public void swap(int i, int j)
+        public void swapIndexes(int i, int j)
         {
             int temp = indexes[i];
             indexes[i] = indexes[j];
             indexes[j] = temp;
+
+            reverse[indexes[i]] = j;
+            reverse[indexes[j]] = i;
+        }
+
+        public void swim(int i)
+        {
+            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
+            {
+                swapIndexes(i, i / 2);
+                i = i / 2;
+            }
+
+        }
+
+        public void sink(int k)
+        {
+
+            while (k * 2 <= count)
+            {
+                int j = k * 2;
+
+                if (j + 1 <= count && data[indexes[j]].CompareTo(data[indexes[j + 1]]) < 0)
+                {
+                    j++;
+                }
+
+                if (data[indexes[j]].CompareTo(data[indexes[k]]) < 0)
+                {
+                    break;
+                }
+
+                swapIndexes(k, j);
+                k = j;
+            }
         }
 
         public void printIndexHeap()

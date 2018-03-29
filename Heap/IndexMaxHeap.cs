@@ -95,7 +95,15 @@ namespace Heap
             }
 
         }
+        public void swim(int i)
+        {
+            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
+            {
+                swapIndexes(i, i / 2);
+                i = i / 2;
+            }
 
+        }
         public void sink(int k)
         {
 
@@ -120,22 +128,12 @@ namespace Heap
 
         }
 
-        public void swim(int i)
-        {
-            while (i > 1 && data[indexes[i / 2]].CompareTo(data[indexes[i]]) < 0)
-            {
-                swapIndexes(i, i / 2);
-                i = i / 2;
-            }
-
-        }
-
-
         public void swapIndexes(int i, int j)
         {
             int temp = indexes[i];
             indexes[i] = indexes[j];
             indexes[j] = temp;
+
         }
 
         public void printIndexHeap()
