@@ -74,5 +74,26 @@ namespace Tree
             return node;
 
         }
+
+        private Value search(Node node , Key key)
+        {
+
+            if (node == null)
+            {
+                return default(Value);
+            }
+            if (node.key.CompareTo(key) == 0)
+            {
+                return node.value;
+            } else if(node.key.CompareTo(key) < 0 )
+            {
+                return search(node.left, key);
+            } else
+            {
+                return search(node.right, key);
+            }
+
+            
+        }
     }
 }
