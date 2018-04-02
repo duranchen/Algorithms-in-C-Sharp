@@ -92,8 +92,72 @@ namespace Tree
             {
                 return search(node.right, key);
             }
-
             
+        }
+
+        public void preOrder()
+        {
+            preOrder(root);
+
+        }
+
+        //前序遍历
+        private void preOrder(Node node)
+        {
+            if(node != null)
+            {
+                Console.WriteLine(node.key);
+                preOrder(node.left);
+                preOrder(node.right);
+            }
+            
+        }
+
+        //中序遍历
+        private void inOrder(Node node)
+        {
+            if(node!= null)
+            {
+                inOrder(node.left);
+                Console.WriteLine(node.key);
+                inOrder(node.right);
+            }
+        }
+
+        //后序遍历
+        private void postOrder(Node node)
+        {
+            if(node != null)
+            {
+                postOrder(node.left);
+                postOrder(node.right);
+                Console.WriteLine(node.key);
+            }
+        }
+
+        //层序遍历
+        public void levelOrder()
+        {
+            Queue<Node> queue  = new Queue<Node>();
+            queue.Enqueue(root);
+
+            while(queue.Count != 0)
+            {
+                Node node = queue.Dequeue();
+
+                if(node.left != null)
+                {
+                    queue.Enqueue(node.left);
+                }
+                if(node.right !=null)
+                {
+                    queue.Enqueue(node.right);
+                }
+               
+                Console.WriteLine(node.key);   
+                
+            }
+
         }
     }
 }
