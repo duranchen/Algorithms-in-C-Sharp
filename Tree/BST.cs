@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tree
 {
-    class BST<Key, Value> where Key : IComparable
+    public class BST<Key, Value> where Key : IComparable
     {
 
-        private class Node
+        public class Node
         {
             public Key key;
             public Value value;
@@ -213,6 +213,47 @@ namespace Tree
             } else
             {
                 return maxRecursion(node.right);
+            }
+        }
+
+        public void removeMin()
+        {
+            if(root!=null)
+            {
+                root = removeMin(root);
+            }
+        }
+        public Node removeMin(Node node)
+        {
+            if(node.left == null)
+            {           
+                count--;
+                return node.right;
+            } else
+            {
+                node.left = removeMin(node.left);
+                return node;
+            }
+        }
+
+        public void removeMax()
+        {
+            if(root != null)
+            {
+                root = removeMax(root);
+            }
+        }
+
+        public Node removeMax(Node node)
+        {
+            if(node.right == null)
+            {
+                count--;
+                return node.left;
+            } else
+            {
+                node.right = removeMax(node.left);
+                return node;
             }
         }
     }
