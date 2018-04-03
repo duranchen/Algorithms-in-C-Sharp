@@ -159,5 +159,61 @@ namespace Tree
             }
 
         }
+
+        public Key minIteration()
+        {
+            Node node = root;
+            while(node.left !=null)
+            {
+                node = node.left;
+            }
+            return node.key;
+        }
+
+        public Key minRecursion()
+        {
+            Node minNode = minRecursion(root);
+
+            return minNode.key;
+        }
+
+        private Node minRecursion(Node node)
+        {
+            if(node.left == null)
+            {
+                return node;
+            } else
+            {
+                return minRecursion(node.left);
+            }
+        }
+
+        public Key maxIteration()
+        {
+            Node node = root;
+            while(node.right != null)
+            {
+                node = node.right;
+            }
+
+            return node.key;
+        }
+
+        public Key maxRecursion()
+        {
+            Node maxNode = maxRecursion(root);
+            return maxNode.key;
+        }
+
+        private Node maxRecursion(Node node)
+        {
+            if(node.right == null)
+            {
+                return node;
+            } else
+            {
+                return maxRecursion(node.right);
+            }
+        }
     }
 }
