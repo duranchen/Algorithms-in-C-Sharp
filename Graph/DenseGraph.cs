@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graph
 {
-    class DenseGraph
+    class DenseGraph:Graph 
     {
         private int n; //顶点数
         private int m; //边数
@@ -18,6 +18,7 @@ namespace Graph
             this.n = n;
             this.m = 0;
             this.directed = directed;
+            this.g = new bool[n, n];
             for(int i=0;i<n;i++)
             {
                 for(int j = 0; j<n;j++)
@@ -72,6 +73,22 @@ namespace Graph
             }
 
             return adjv;
+        }
+
+        public void print()
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Vertex {0:D} : ", i);
+                List<int> adjV = (List<int>)adj(i);
+                foreach (int v in adjV)
+                {
+                    Console.Write("{0:D} ", v);
+                }
+
+                Console.WriteLine();
+            }
+
         }
     }
 }

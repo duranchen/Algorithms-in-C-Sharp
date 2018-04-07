@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Graph
 {
-    class SparseGraph
+    class SparseGraph:Graph
     {
         int n;
         int m;
@@ -52,7 +52,7 @@ namespace Graph
 
             if(directed == false)
             {
-                g[w].Add(w);
+                g[w].Add(v);
             }
             m++;
         }
@@ -60,6 +60,22 @@ namespace Graph
         public IEnumerable<int> adj(int v)
         {
             return g[v];
+        }
+
+        public void print()
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Vertex {0:D} : ", i);
+                List<int> adjV = (List<int>)adj(i);
+                foreach (int v in adjV)
+                {
+                    Console.Write("{0:D} ", v);
+                }
+
+                Console.WriteLine();
+            }
+
         }
     }
 }
