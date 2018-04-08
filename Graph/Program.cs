@@ -21,13 +21,17 @@ namespace Graph
 
             Console.WriteLine("SparseGraph {0:D} components", sparseGraphCount.count());
 
-            int v = 0, w = 4;
+            int v = 0, w = 6;
             Console.WriteLine("vertex {0:D} and vertex {1:D} connected: {2:D}",v,w,sparseGraphCount.isConnected(v, w));
 
 
-            Path sgPath = new Path(sparseGraph, v);
+            Path dfsPath = new Path(sparseGraph, v);
 
-            sgPath.printPath(w);
+            dfsPath.printPath(w);
+
+            ShortestPath bfsPath = new ShortestPath(sparseGraph, v);
+
+            bfsPath.printPath(w);
 
             sparseGraph.print();
 
