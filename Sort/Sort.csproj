@@ -92,6 +92,10 @@
       <Project>{5eb1ec9a-c0e6-4479-811f-617767b9d534}</Project>
       <Name>Heap</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{b6f60a05-448b-414e-8043-4e5aadd191c7}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

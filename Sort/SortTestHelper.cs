@@ -1,4 +1,6 @@
 ﻿using System;
+using Algorithms.Helper;
+
 
 namespace Algorithms.Sort
 {
@@ -53,14 +55,14 @@ namespace Algorithms.Sort
 
         public static void testSort<T>(string sortName, Action<T[]> sort, T[] arr) where T : IComparable
         {
-            DateTime start = DateTime.Now;
-            sort(arr);
-            DateTime end = DateTime.Now;
 
-            TimeSpan elapsedtime = end - start;
+            StopWatch stopWatch = new StopWatch(); 
+            sort(arr);
+            double elapsedTime = stopWatch.elapsedTime();
+
             if (isSorted(arr))
             {
-                Console.WriteLine(sortName + " : " + elapsedtime.TotalSeconds + " s");
+                Console.WriteLine(sortName + " : " + elapsedTime + " s");
             }
             else
             {

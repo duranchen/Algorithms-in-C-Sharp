@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sort", "Sort\Sort.csproj", "{18D98339-D6C2-42EA-BDFB-157C8A9A085C}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFind", "UnionFind\UnionFind.csproj", "{BC429BB1-B3D6-4B1E-9B80-A55129333809}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Graph\Graph.csproj", "{CBD5B452-6082-4F46-BC10-F85735BB1249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{B6F60A05-448B-414E-8043-4E5AADD191C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{CBD5B452-6082-4F46-BC10-F85735BB1249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD5B452-6082-4F46-BC10-F85735BB1249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD5B452-6082-4F46-BC10-F85735BB1249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F60A05-448B-414E-8043-4E5AADD191C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F60A05-448B-414E-8043-4E5AADD191C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F60A05-448B-414E-8043-4E5AADD191C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F60A05-448B-414E-8043-4E5AADD191C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
