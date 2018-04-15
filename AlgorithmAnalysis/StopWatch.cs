@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Algorithms.Helper
+namespace Algorithms.AlgorithmAnalysis
 {
     // 计时器
     public class StopWatch

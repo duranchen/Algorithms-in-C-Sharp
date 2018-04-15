@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5EB1EC9A-C0E6-4479-811F-617767B9D534}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Heap</RootNamespace>
+    <RootNamespace>Algorithms.Heap</RootNamespace>
     <AssemblyName>Heap</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
